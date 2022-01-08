@@ -1,0 +1,64 @@
+﻿@model CameraShop.Areas.Admin.Models.DanhMuc
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-12 d-flex no-block align-items-center">
+            <h4 class="page-title text-danger">Xoá danh mục: @Model.TenLoai</h4>
+
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Bạn có chắc muốn xoá danh mục này không ?</h5>    <hr />
+                    <dl class="dl-horizontal">
+                        
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TenLoai)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.TenLoai)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.GhiChu)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.GhiChu)
+                        </dd>
+
+                    
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Anh)
+                        </dt>
+
+                        <dd>
+                            <img src="@Model.Anh" height="200" />
+                        </dd>
+
+                    </dl>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Delete" class="btn btn-danger" />
+                            <a class="btn btn-secondary" style="color:white" href="/Admin/DanhMucs/Index">Back to List</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

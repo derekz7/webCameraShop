@@ -1,0 +1,85 @@
+﻿@model CameraShop.Areas.Admin.Models.SanPham
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-12 d-flex no-block align-items-center">
+            <h4 class="page-title text-danger">Xoá sản phẩm: @Model.TenSP</h4>
+
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Bạn có chắc muốn xoá sản phẩm này không ?</h5>    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.DanhMuc.TenLoai)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.DanhMuc.TenLoai)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TenSP)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.TenSP)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.MoTa)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.MoTa)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.DonGia)
+                        </dt>
+
+                        <dd>
+                            <h6 style="color:red">@string.Format("{0:#,0##}", Model.DonGia) VND</h6>
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.SoLuong)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.SoLuong)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Anh)
+                        </dt>
+
+                        <dd>
+                            <img src="@Model.Anh" height="200" />
+                        </dd>
+
+                    </dl>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Delete" class="btn btn-danger" /> 
+                            <a class="btn btn-secondary" style="color:white" href="/Admin/SanPhams/Index">Back to List</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

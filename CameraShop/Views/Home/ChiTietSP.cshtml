@@ -1,0 +1,119 @@
+﻿@model CameraShop.Models.SanPham
+@using CameraShop.Models
+@{
+    ViewBag.Title = "ChiTietSP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="feature_part padding_top">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="section_tittle text-center">
+                    <h2>Product Details</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================Single Product Area =================-->
+<div class="product_image_area">
+    <div class="container">
+        <div class="row s_product_inner justify-content-between">
+            <div class="col-lg-7 col-xl-7">
+                <div class="product_slider_img">
+                    <div id="vertical">
+                        <div data-thumb="@Model.Anh">
+                            <img src="@Model.Anh" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-xl-4">
+                <div class="s_product_text">
+                    <h3>@Model.TenSP</h3>
+                    <h2 style="color:red">@string.Format("{0:#,##0}", Model.DonGia) đ</h2>
+                    <ul class="list">
+                        <li>
+                            @{
+                                DanhMuc danhMuc = ViewBag.danhMuc as DanhMuc;
+                            }
+                            <a class="active" href="#">
+                                <span>Category</span> : @danhMuc.TenLoai
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#"> <span>Availibility</span> : In Stock</a>
+                        </li>
+                    </ul>
+                    <p>
+                        @Model.MoTa
+                    </p>
+                    <div class="card_area d-flex justify-content-between align-items-center">
+                        <div class="product_count">
+                            <span class="inumber-decrement"> <i class="ti-minus"></i></span>
+                            <input class="input-number" type="text" value="1" min="0" max="10">
+                            <span class="number-increment"> <i class="ti-plus"></i></span>
+                        </div>
+                        <a href="#" class="btn_3">add to cart</a>
+                        <a href="#" class="like_us"> <i class="ti-heart"></i> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--================End Single Product Area =================-->
+<!--================Product Description Area =================-->
+<section class="product_description_area">
+    <div class="container">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                   aria-selected="true">Description</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <p>
+                    @Model.MoTa
+                </p>
+
+            </div>
+
+        </div>
+</section>
+<!--================End Product Description Area =================-->
+<!-- product_list part start-->
+<section class="product_list best_seller">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="section_tittle text-center">
+                    <h2>Best Sellers <span>shop</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center justify-content-between">
+            <div class="col-lg-12">
+                <div class="best_product_slider owl-carousel">
+                    @{
+                        List<SanPham> list = ViewBag.listSP as List<SanPham>;
+                        foreach (var item in list)
+                        {
+                            <div class="single_product_item">
+                                <a href="/Home/ChiTietSP/@item.MaSP"><img src="@item.Anh" width="210" height="230" alt=""></a>
+                                <div class="single_product_text">
+                                    <h4>@item.TenSP</h4>
+                                    <h3>@string.Format("{0:#,##0}", item.DonGia) đ</h3>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- product_list part end-->

@@ -1,0 +1,119 @@
+﻿@model IEnumerable<CameraShop.Areas.Admin.Models.DanhMuc>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-12 d-flex no-block align-items-center">
+            <h4 class="page-title">Quản lý danh mục</h4>
+
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+
+<div class="container-fluid">
+
+    <p>
+        @Html.ActionLink("Thêm loại sản phẩm", "Create")
+    </p>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Danh sách danh mục</h5>
+                    <div class="table-responsive">
+                        <table id="zero_config"
+                               class="table table-striped table-bordered">
+                            <thead>
+                                <tr style="background-color: #141619">
+                                    <th style="color:white">
+                                        STT
+                                    </th>
+                                    <th style="color:white">
+                                        @Html.DisplayNameFor(model => model.TenLoai)
+                                    </th>
+                                    <th style="color:white">
+                                        @Html.DisplayNameFor(model => model.GhiChu)
+                                    </th>
+                                  
+                                    <th style="color:white">
+                                        @Html.DisplayNameFor(model => model.Anh)
+                                    </th>
+                                    <th style="color:white" class="col-md-2">
+                                        Tuỳ chọn
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.MaLoai
+                                        </td>
+                                        <td>
+                                            <a href="/Admin/DanhMucs/Details/@item.MaLoai"> <b>@Html.DisplayFor(modelItem => item.TenLoai)</b></a>
+
+                                        </td>
+                                        <td>
+                                            @{
+                                                if (item.GhiChu.Length > 100)
+                                                {
+                                                    <span>@item.GhiChu.Substring(0, 100)...</span>
+                                                }
+                                                else
+                                                {
+                                                    @item.GhiChu
+                                                }
+                                            }
+                                        </td>
+                                       
+                                        <td>
+                                            <img src="@item.Anh" height="100" />
+                                        </td>
+                                        <td style="text-align : center">
+                                            <p>
+                                                @Html.ActionLink("Sửa", "Edit", new { id = item.MaLoai }, new { @class = "btn btn-success", @style = "color:white" })
+                                            </p>
+                                            <p>
+                                                @Html.ActionLink("Xoá", "Delete", new { id = item.MaLoai }, new { @class = "btn btn-danger" })
+                                            </p>
+
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>
+                                        STT
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TenLoai)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.GhiChu)
+                                    </th>
+                                    
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Anh)
+                                    </th>
+                                    <th>
+                                        Tuỳ chọn
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
