@@ -137,10 +137,12 @@
     <Compile Include="Areas\Admin\Models\DBModels.cs" />
     <Compile Include="Areas\Admin\Models\SanPham.cs" />
     <Compile Include="Areas\Admin\Models\SanPhamModels.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\DanhMuc.cs" />
     <Compile Include="Models\DanhMucModels.cs" />
     <Compile Include="Models\DBContext.cs" />
@@ -1002,6 +1004,7 @@
     <Content Include="Content\img\blog\slide_thumb_1.png" />
     <Content Include="Content\img\breadcrumb.png" />
     <Content Include="Content\img\breadcrumb\checkout-bg.jpg" />
+    <Content Include="Content\img\remove.png" />
     <Content Include="Content\img\client_logo\client_logo_1.png" />
     <Content Include="Content\img\client_logo\client_logo_2.png" />
     <Content Include="Content\img\client_logo\client_logo_3.png" />
@@ -1684,6 +1687,7 @@
     <Content Include="Views\Home\ChiTietSP.cshtml" />
     <Content Include="Views\Home\SPtheoDanhMuc.cshtml" />
     <Content Include="Views\Shared\_DanhMuc.cshtml" />
+    <Content Include="Views\Cart\ShowCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,88 @@
+﻿@model CameraShop.Models.Cart
+@{
+    ViewBag.Title = "ShowCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="cart_area padding_top">
+    <div class="container">
+        <div class="cart_inner">
+            <div class="table-responsive">
+                @{
+                    int total = 0;
+                    if (Model != null && Model.ItemGioHangs.Count() > 0)
+                    {
+
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.ItemGioHangs)
+                                {
+                                    int tong = (int) item.sanPham_shopping.DonGia * item.soLuong_shopping;
+                                    total += tong;
+                                <tr>
+                                    <td>
+                                        <div class="media">
+                                            <div class="d-flex">
+                                                <img src="@item.sanPham_shopping.Anh" width="150" alt="" />
+                                            </div>
+                                            <div class="media-body">
+                                                <p>@item.sanPham_shopping.TenSP</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5>@string.Format("{0:#,##0}", item.sanPham_shopping.DonGia)</h5>
+                                    </td>
+                                    <td>
+
+                                        <div class="product_count">
+                                            <span class="input-number-decrement"> <i class="ti-angle-down"></i></span>
+                                            <input class="input-number" type="number" id="soLuong" value="@item.soLuong_shopping" min="0" max="10">
+                                            <span class="input-number-increment"><i class="ti-angle-up"></i></span>
+
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <a href="/Cart/delete_SP/@item.Id">
+                                            <img class="btn" width="50" src="~/Content/img/remove.png" />
+                                        </a>
+                                    </td>
+                                </tr>
+                                }
+
+
+                         
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <h5>Subtotal</h5>
+                                    </td>
+                                    <td>
+                                        <h5 style="color:red">@string.Format("{0:#,##0}", total)</h5>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    }
+                }
+
+                <div class="checkout_btn_inner float-right">
+                    <a class="btn_1" href="/Home/SPtheoDanhMuc">Continue Shopping</a>
+                    <a class="btn_1 checkout_btn_1" href="#">Proceed to checkout</a>
+                </div>
+            </div>
+        </div>
+</section>
